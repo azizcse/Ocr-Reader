@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:support-compat:27.1.1'
     compile 'com.rmtheis:tess-two:6.2.0'
     compile 'org.jmrtd:jmrtd:0.5.13'
+    implementation "com.android.support:appcompat-v7:27.1.1"
 }

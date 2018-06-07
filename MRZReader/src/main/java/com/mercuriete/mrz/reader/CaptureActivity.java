@@ -67,6 +67,7 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 
 import com.mercuriete.mrz.reader.camera.CameraManager;
 import com.mercuriete.mrz.reader.camera.ShutterButton;
+import com.mercuriete.mrz.reader.result.ResultActivity;
 
 import org.jmrtd.lds.icao.MRZInfo;
 
@@ -824,10 +825,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                     MRZInfo mrzInfo = new MRZInfo(result);
                     if (mrzInfo.toString().equals(result)) {
                         Toast.makeText(this, mrzInfo.toString(), Toast.LENGTH_LONG).show();
-                        Intent returnIntent = new Intent();
+                        Intent returnIntent = new Intent(this, ResultActivity.class);
                         returnIntent.putExtra(MRZ_RESULT, mrzInfo);
                         setResult(Activity.RESULT_OK, returnIntent);
-                        finish();
+
+                        returnIntent.putExtra("result",  mrzInfo.toString());
+                        startActivity(returnIntent);
+                        //finish();
                     }
                 } catch (IllegalStateException | IllegalArgumentException e) {
                     Log.w("CACA", "checksum fail", e);
