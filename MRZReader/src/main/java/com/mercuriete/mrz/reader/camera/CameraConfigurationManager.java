@@ -146,14 +146,16 @@ final class CameraConfigurationManager {
 
     private static void doSetTorch(Camera.Parameters parameters, boolean newSetting) {
         String flashMode;
-        if (newSetting) {
+        /*if (newSetting) {
             flashMode = findSettableValue(parameters.getSupportedFlashModes(),
                     Camera.Parameters.FLASH_MODE_TORCH,
                     Camera.Parameters.FLASH_MODE_ON);
         } else {
             flashMode = findSettableValue(parameters.getSupportedFlashModes(),
                     Camera.Parameters.FLASH_MODE_OFF);
-        }
+        }*/
+        flashMode = findSettableValue(parameters.getSupportedFlashModes(),
+                Camera.Parameters.FLASH_MODE_OFF);
         if (flashMode != null) {
             parameters.setFlashMode(flashMode);
         }
